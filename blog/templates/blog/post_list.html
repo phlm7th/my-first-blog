@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ParkUX blog</title>
-</head>
-<body>
-    <div>
-        <h1><a href="/">Django Girls Blog</a></h1>
-    </div>
-    <hr>
+{% extends 'blog/base.html' %}
 
+{% block content %}
     {% for post in posts %}
-        <div>
-            <h1><a href="">{{ post.title }}</a></h1>
+        <div class="post">
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
             <p>{{ post.text }}</p>
             <p>Author: {{ post.author }}</p>
             <p>published: {{ post.published_date|linebreaksbr }}</p>
             <hr>
         </div>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}
